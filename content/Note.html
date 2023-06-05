@@ -141,12 +141,18 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content"> <a href='Note.html'>Next</a> >> Note<br /><h1>About</h1>
-<p>Replit: <a>https://w16.scrum3.repl.co (目前無法在編輯器中將此連結設為 anchor)</a></p>
-<p>Github 倉儲: <a href="https://github.com/scrum-3/w16">https://github.com/scrum-3/w16</a></p>
-<p>Github Pages: <a href="https://scrum-3.github.io/w16">https://scrum-3.github.io/w16</a></p>
-<p></p>
-<br /> <a href='Note.html'>Next</a> >> Note</div>
+    <div id="tipue_search_content">About << <a href='About.html'>Previous</a> <a href='cmsimde.html'>Next</a> >> cmsimde<br /><h1>Note</h1>
+<ol>
+<li>登入 github.com</li>
+<li>連結到 <a href="https://github.com/mdecycu/cmsimde_site">https://github.com/mdecycu/cmsimde_site</a>, 以此倉儲作為 Template 建立一個新倉儲 (只有 cmsimde 目錄, 並不將其作為子目錄, 好處是可以自行更動 cmsimde 內容, 壞處為要自行更新 cmsimde).</li>
+<li>連結到 <a href="https://github.com/mdecycu/cmsite">https://github.com/mdecycu/cmsite</a>, 以此倉儲作為 Template 建立一個新倉儲 (以 cmsimde 作為子模組, 好處為可利用 cd cmsimde, git pull origin master 完成與 cmsimde 官網內容同步, 壞處為不可任意修改 cmsimde 目錄中的資料).</li>
+<li>回到 Replit, 建立新的 Repl 時, 利用 Import from Github 建立新專案 (w16), 必須確定從 Replit 進入 Github 維護倉儲內容的權限許可. (若無授權則無法 Import from Github)</li>
+<li>開啟 Repllit 專案中的隱藏檔案檢視, 然後查看 .replit 是否以 main.py 作為 entry point, 且 main.py 內容如下:</li>
+<li>並且進入 Shell 頁面 (等同 Windows 的 cmd 命令列視窗) 利用 pip install flask flask_cors bs4 lxml pelican markdown gevent 安裝執行 cmsimde 動態網站所需要的 Python 模組, flask 與 flask_cors 為網際框架, bs4 與 lxml 為頁面分頁所需模組, pelican 與 markdown 則用於建立網誌, gevent 則用於啟動 main.py.</li>
+<li>按下 Run 執行 main.py, 就可以看到動態網站已經啟動.</li>
+<li>若更新動態網站內容後, 用 Generate_pages 轉為靜態, 必須在 Git Tools 中執行 git add . 與 git commit -m, 最後才進入 Shell 以 git push 將改版內容推向對應的 Github 倉儲.</li>
+</ol>
+<p></p><br />About << <a href='About.html'>Previous</a> <a href='cmsimde.html'>Next</a> >> cmsimde</div>
         
     <!-- footer -->
       <div class="container">
