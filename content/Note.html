@@ -152,6 +152,46 @@ img.add_border {
 <li>按下 Run 執行 main.py, 就可以看到動態網站已經啟動.</li>
 <li>若更新動態網站內容後, 用 Generate_pages 轉為靜態, 必須在 Git Tools 中執行 git add . 與 git commit -m, 最後才進入 Shell 以 git push 將改版內容推向對應的 Github 倉儲.</li>
 </ol>
+<p>main.py 內容:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from cmsimde import flaskapp
+from gevent.pywsgi import WSGIServer
+
+#flaskapp.app.run(host="0.0.0.0", debug=True)
+http_server = WSGIServer(('0.0.0.0', 8080), flaskapp.app)
+http_server.serve_forever()</pre>
+<p>若要修改網站標題, 可以編輯 init.py 後重新開啟後才能生效.</p>
+<p>init.py 內容:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import os
+
+"""CMSimfly Initialization setup
+"""
+
+# get current directory, on Windows, back slash at the end of the directory
+_curdir = os.path.join(os.getcwd(), os.path.dirname(__file__))
+# config directory
+config_dir = _curdir + "/config/"
+class Init(object):
+    # uwsgi as static class variable, can be accessed by Init.uwsgi
+    uwsgi = False
+    site_title = "w16"
+    ip = "127.0.0.1"
+    dynamic_port = 9445
+    static_port = 8445
+    def __init__(self):
+        # hope to create downloads and images directories　
+        if not os.path.isdir(_curdir + "/downloads"):
+            try:
+                os.makedirs(_curdir + "/downloads")
+            except:
+                print("mkdir error")
+        if not os.path.isdir(_curdir + "/images"):
+            try:
+                os.makedirs(_curdir + "/images")
+            except:
+                print("mkdir error")
+
+
+</pre>
 <p></p><br />About << <a href='About.html'>Previous</a> <a href='cmsimde.html'>Next</a> >> cmsimde</div>
         
     <!-- footer -->
